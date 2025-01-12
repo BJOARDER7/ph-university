@@ -1,18 +1,7 @@
 import { Student } from "./student.model";
-import { TStudent } from "./student.interface";
 
 
-const createStudentIntoDB = async (studentData: TStudent) => {
 
-    if(await Student.isStudentExists(studentData.id)){
-        throw new Error('User already exist!')
-    }
-    
-    const result = await Student.create(studentData)
-    
-
-    return result
-}
 const getAllStudentsFromDB = async () => {
     const result = await Student.find()
 
@@ -24,8 +13,7 @@ const getSingleStudentFromDB = async (id: string) => {
     return result
 }
 
-export const StudentServices = {
-    createStudentIntoDB,
+export const StudentServices = {  
     getAllStudentsFromDB,
     getSingleStudentFromDB
 }

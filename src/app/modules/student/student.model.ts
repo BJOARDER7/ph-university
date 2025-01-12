@@ -19,6 +19,7 @@ const studentNameSchema = new Schema<TStudentName>({
     },
     middleName: {
         type: String,
+        minlength: [2, 'Last name must be at least 2 characters'],
         maxlength: [20, 'Middle name cannot exceed 20 characters'],
         trim: true,
     },
@@ -105,6 +106,12 @@ const studentSchema = new Schema<TStudent, StudentModel>({
         unique: true,
         trim: true,
     },
+    user: {
+        type: Schema.Types.ObjectId,
+        required: [true, 'User id is required'],
+        unique: true,
+        ref: 'User',
+      },
     password: {
         type: String,
         required: [true, 'Password is required'],

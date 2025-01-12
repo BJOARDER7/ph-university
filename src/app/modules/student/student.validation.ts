@@ -59,7 +59,7 @@ const StudentValidationSchema = z.object({
     .string()
     .trim()
     .min(1, { message: 'ID is required' }),
-    password: z.string().max(20),
+    password: z.string().max(20).optional(),
   name: StudentNameSchema,
   gender: z.enum(['male', 'female', 'other'], { message: 'Gender must be male, female, or other' }),
   dateOfBirth: z.string().trim().min(1, { message: 'Date of birth is required' }),
